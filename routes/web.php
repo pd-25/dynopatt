@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\course\CourseController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
@@ -24,6 +25,7 @@ Auth::routes();
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 Route::resource('courses', CourseController::class);
+Route::resource('categories', CategoryController::class);
 
 });
 

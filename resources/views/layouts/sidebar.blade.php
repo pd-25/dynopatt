@@ -12,8 +12,7 @@
             <div class="user-panel p-3 light mb-2">
                 <div>
                     <div class="float-left image">
-                        <img class="user_avatar" src="{{ asset('admin/assets/img/dummy/u2.png') }}"
-                            alt="User Image">
+                        <img class="user_avatar" src="{{ asset('admin/assets/img/dummy/u2.png') }}" alt="User Image">
                     </div>
                     <div class="float-left info">
                         <h6 class="font-weight-light mt-2 mb-1">Alexander Pierce</h6>
@@ -23,13 +22,22 @@
                 <div class="clearfix"></div>
                 <div class="collapse multi-collapse" id="userSettingsCollapse">
                     <div class="list-group mt-3 shadow">
-                        <a href="index.html" class="list-group-item list-group-item-action ">
+                        {{-- <a href="index.html" class="list-group-item list-group-item-action ">
                             <i class="mr-2 icon-umbrella text-blue"></i>Profile
                         </a>
                         <a href="#" class="list-group-item list-group-item-action"><i
                                 class="mr-2 icon-cogs text-yellow"></i>Settings</a>
                         <a href="#" class="list-group-item list-group-item-action"><i
-                                class="mr-2 icon-security text-purple"></i>Change Password</a>
+                                class="mr-2 icon-security text-purple"></i>Change Password</a> --}}
+                        <a class="list-group-item list-group-item-action" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
@@ -40,10 +48,10 @@
                     <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview {{ request()->segment(2) == 'courses' ? 'active' : '' }}"><a href="#">
+            <li class="treeview {{ request()->segment(2) == 'courses' ? 'active' : '' }}"><a href="javascript:void(0)">
                     <i class="icon icon icon-package blue-text s-18"></i>
                     <span>Courses</span>
-                    
+
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('courses.index') }}"><i class="icon icon-circle-o"></i>All Courses</a>
@@ -53,20 +61,16 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview"><a href="#"><i
-                        class="icon icon-account_box light-green-text s-18"></i>Pages<i
-                        class="icon icon-angle-left s-18 pull-right"></i></a>
+            <li class="treeview {{ request()->segment(2) == 'categories' ? 'active' : '' }}"><a href="javascript:void(0)"><i class="icon icon-account_box light-green-text s-18"></i>Categories
                 <ul class="treeview-menu">
-                    <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>All Users</a>
+                    <li><a href="{{ route('categories.index') }}"><i class="icon icon-circle-o"></i>All Categories</a>
                     </li>
-                    <li><a href="panel-page-users-create.html"><i class="icon icon-add"></i>Add User</a>
+                    <li><a href="{{ route('categories.create') }}"><i class="icon icon-add"></i>Add Category</a>
                     </li>
-                    <li><a href="panel-page-profile.html"><i class="icon icon-user"></i>User Profile </a>
-                    </li>
+                   
                 </ul>
             </li>
-            <li class="treeview"><a href="#"><i
-                        class="icon icon-account_box light-green-text s-18"></i>Users<i
+            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Users<i
                         class="icon icon-angle-left s-18 pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>All Users</a>

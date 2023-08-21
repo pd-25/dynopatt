@@ -120,9 +120,9 @@
         <!--Sidebar End-->
         @include('layouts.topHeader')
         <div class="page has-sidebar-left">
-           @yield('content')
+            @yield('content')
         </div>
-       
+
     </div>
     <!--/#app -->
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
@@ -143,6 +143,17 @@
                 $(d).bind("ready", f)
             })
         })(jQuery, document)
+    </script>
+    <script>
+         $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            alert('Are you sure to delete the service?');
+            form.submit();
+
+
+        });
     </script>
 </body>
 
