@@ -17,6 +17,12 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('catagory_slug', 250)->unique();
             $table->string('catagory_name', 250);
+            $table->string('objective_f', 250);
+            $table->string('objective_s', 250);
+            $table->string('objective_t', 250);
+            $table->string('objective_fo', 250);
+            $table->boolean('category_type')->default(0);
+            $table->text('overview');
             $table->timestamps();
         });
     }

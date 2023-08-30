@@ -35,8 +35,9 @@ class CategoryController extends Controller
             'catagory_name' => 'required|string',
             'catagory_slug' => 'required|string|unique:categories',
         ]);
-        $data = $requests->only('catagory_name', 'catagory_slug');
-        if ($this->categoryInterface->storeCategory($data)) {
+        $data = $requests->only('catagory_name', 'catagory_slug', 'objective_fo', 'objective_t', 'objective_s', 'objective_f', 'overview', 'category_type');
+        $image = $requests->cover_image ?? null;
+        if ($this->categoryInterface->storeCategory($data, $image)) {
             return redirect()->route('categories.index')->with('msg', 'Category created successfully');
         } else {
             return back()->with('msg', 'Some Error Occur, Try again');
@@ -64,8 +65,10 @@ class CategoryController extends Controller
         $request->validate([
             'catagory_name' => 'required|string',
         ]);
-        $data = $request->only('catagory_name');
-        if ($this->categoryInterface->updateCategory($data, $slug)) {
+        $data = $request->only('catagory_name', 'objective_fo', 'objective_t', 'objective_s', 'objective_f', 'overview', 'category_type');
+        $image = $request->cover_image ?? null;
+        // dd($data);
+        if ($this->categoryInterface->updateCategory($data, $image, $slug)) {
             return redirect()->route('categories.index')->with('msg', 'Category updated successfully');
         } else {
             return back()->with('msg', 'Some error occur try again');

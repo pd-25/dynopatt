@@ -14,7 +14,32 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('clear_cache', function () {
 
+    \Artisan::call('cache:clear');
+
+    dd("Cache is cleared");
+
+});
+Route::get('link', function () {
+
+    \Artisan::call('storage:link');
+
+    dd("linked");
+
+});
+
+Route::get('route', function () {
+
+    \Artisan::call('route:clear');
+
+    dd("route-clear");
+
+});
+
+Route::get('/', function () {
+    return redirect('/login');
+});
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -26,6 +51,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function(){
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 Route::resource('courses', CourseController::class);
 Route::resource('categories', CategoryController::class);
+Route::post('/site-update', [App\Http\Controllers\HomeController::class, 'siteUpdate'])->name('siteinfo.update');
+
 
 });
 

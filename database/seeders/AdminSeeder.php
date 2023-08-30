@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
         User::create([
             "name" => "Admin Dynopat",
             "email" => "dynopat@mail.com",
-            "password" => \Hash::make("12345"),
+            "password" => \Hash::make("dynopat@2023!R"),
       
         ]);
     }

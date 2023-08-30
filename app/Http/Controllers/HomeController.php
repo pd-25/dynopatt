@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SiteInfo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,7 +27,25 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
         return view('admin.dashboard.dashboard');
+    }
+
+    public function siteUpdate(Request $request)
+    {
+        $request->validate([
+            'phone_f' => 'required|string',
+            'phone_s' => 'required|string',
+            'email' => 'required|email',
+            'address' => 'required|string',
+        ]);
+        $data = $request->only('phone_f', 'phone_s', 'email', 'address');
+        $update = SiteInfo::where('id', 1)->update($data);
+        if($update) {
+            return back()->with('msg', 'Data updated successfully');
+        }else {
+            return back()->with('msg', 'Some error occur');
+        }
     }
 }

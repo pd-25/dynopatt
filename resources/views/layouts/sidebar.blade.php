@@ -45,7 +45,7 @@
         <ul class="sidebar-menu">
             <li class="header"><strong>MAIN NAVIGATION</strong></li>
             <li class="treeview"><a href="{{ route('dashboard') }}">
-                    <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>Dashboard</span>
+                    <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>SiteInfo</span>
                 </a>
             </li>
             <li class="treeview {{ request()->segment(2) == 'courses' ? 'active' : '' }}"><a href="javascript:void(0)">
@@ -70,7 +70,7 @@
                    
                 </ul>
             </li>
-            <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Users<i
+            {{-- <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Users<i
                         class="icon icon-angle-left s-18 pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="panel-page-users.html"><i class="icon icon-circle-o"></i>All Users</a>
@@ -96,7 +96,7 @@
                     <li><a href="panel-page-inbox-create.html"><i class="icon icon-add"></i>Compose</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
         </ul>
     </section>
